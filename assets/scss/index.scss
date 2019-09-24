@@ -1,0 +1,40 @@
+@import '_default.scss';
+
+$imgSize: 100px;
+
+main {
+    margin-top: 15%;
+
+    nav {
+        margin: 0 auto;
+        max-width: 250px;
+
+        a {
+            display: block;
+            height: $imgSize;
+
+            &:hover {
+                box-shadow: 0 0 5px #FFF;
+            }
+
+            &:nth-child(n + 2) {
+                margin-top: 20px;
+            }
+
+            img, span {
+                display: block;
+                float: left;
+            }
+            img {
+                height: $imgSize;
+                width: $imgSize;
+            }
+            span {
+                font-size: 20px;
+                margin: ($imgSize * .4) 0 0 10px;
+                text-transform: uppercase;
+                vertical-align: middle;
+            }
+        }
+    }
+}

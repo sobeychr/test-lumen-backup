@@ -1,0 +1,23 @@
+html, body {
+    background: #131313;
+    font-family: Arial, sans-serif;
+    color: #DDD;
+}
+
+a {
+    color: #27ab76;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+        color: #32e39c;
+        text-decoration: underline;
+    }
+}
+
+main {
+     margin: 20px auto 0;
+     max-width: 950px;
+     width: 98%;
+     transition: width .2s linear;
+}

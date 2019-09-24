@@ -3,3 +3,5 @@
 Homestead.json
 Homestead.yaml
 .env
+/grunt/.sass-cache
+/node_modules
