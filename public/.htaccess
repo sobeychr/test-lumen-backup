@@ -14,10 +14,6 @@
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
-    # Asset files
-    RewriteCond %{REQUEST_URI} /(css|js|images)/ [NC]
-    RewriteRule (css|js|images)/(.+)$ assets/$1/$2 [L]
-
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f

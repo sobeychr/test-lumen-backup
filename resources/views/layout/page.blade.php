@@ -4,10 +4,10 @@
     @endphp
     <head>
         <title>LocalLumen - {{$name}}</title>
-        <link rel='icon' href='images/icon/{{$name}}.png' type='image/png'/>
-        <link rel='shortcut icon' href='images/icon/{{$name}}.png' type='image/png'/>
-        <link rel='stylesheet' type='text/css' href='css/{{$name}}.css#{{$time}}'/>
-        <script src='js/{{$name}}.js#{{$time}}'></script>
+        <link rel='icon' href='assets/images/icons/{{$name}}.png' type='image/png'/>
+        <link rel='shortcut icon' href='assets/images/icons/{{$name}}.png' type='image/png'/>
+        <link rel='stylesheet' type='text/css' href='assets/css/{{$name}}.css#{{$time}}'/>
+        <script src='assets/js/{{$name}}.js#{{$time}}'></script>
     </head>
     <body>
         <header>

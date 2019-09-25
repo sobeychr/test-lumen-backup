@@ -11,6 +11,12 @@
 |
 */
 
+$router->get('/server', function () use ($router) {
+    $server = $_SERVER;
+    ksort($server);
+    return var_dump($server, true);
+});
+
 $router->get('/test', function () use ($router) {
     return $router->app->version();
 });
