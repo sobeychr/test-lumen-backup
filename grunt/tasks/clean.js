@@ -5,8 +5,8 @@ module.exports = (grunt) => {
         assets: ['./public/assets/**/*', '!./public/assets/.gitkeep'],
         sass:   ['./grunt/.sass-cache/**/*'],
         storage: [
-            './storage/framework/views/**/*.php'
-            './storage/logs/**/*.log'
+            './storage/framework/views/**/*.php',
+            './storage/logs/**/*.log',
         ],
     };
 };
