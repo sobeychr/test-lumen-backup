@@ -13,6 +13,10 @@
         <header>
             @yield('header')
         </header>
+        <aside>
+            <button class='aside__button'></button>
+            @yield('aside')
+        </aside>
         <main>
             @yield('main')
         </main>

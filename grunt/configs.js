@@ -15,8 +15,11 @@ module.exports = (grunt) => {
         grunt.loadNpmTasks(tasks[task]);
     });
 
+    require('./commands/addpage.js')(grunt);
     require('./commands/build.js')(grunt);
     require('./commands/dev.js')(grunt);
+    require('./commands/removepage.js')(grunt);
+    // require('./commands/webpage.js')(grunt);
 
     const pkg = grunt.file.readJSON('./package.json');
     return {

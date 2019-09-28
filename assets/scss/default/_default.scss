@@ -1,6 +1,6 @@
 html, body {
     background: #131313;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     color: #DDD;
 }
 
@@ -12,6 +12,40 @@ a {
     &:hover {
         color: #32e39c;
         text-decoration: underline;
+    }
+}
+
+aside {
+    height: 100%;
+    left: 0;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    width: 250px;
+
+    .aside__button {
+        border: none;
+        border-radius: 7px;
+        background: #27ab76;
+        cursor: pointer;
+        display: block;
+        font-size: 20px;
+        font-weight: 900;
+        height: 25px;
+        outline: none;
+        width: 25px;
+
+        &:before {
+            content: '>';
+        }
+
+        &:hover {
+            background: #32e39c;
+        }
+
+        @media (min-width: 751px) {
+            display: none;
+        }
     }
 }
 
