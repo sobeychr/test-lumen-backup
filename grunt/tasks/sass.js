@@ -1,6 +1,8 @@
 'use strict';
 
 module.exports = (grunt) => {
+    grunt.task.loadNpmTasks('grunt-contrib-sass');
+
     return {
         main: {
             options: {
@@ -10,6 +12,7 @@ module.exports = (grunt) => {
                 style: 'compressed',
                 trace: true,
                 unixNewlines: true,
+                update: true,
             },
             files: [{
                 expand: true,

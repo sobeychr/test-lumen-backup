@@ -1,6 +1,8 @@
 'use strict';
 
 module.exports = (grunt) => {
+    grunt.task.loadNpmTasks('grunt-contrib-watch');
+
     return {
         css: {
             files: ['assets/scss/**/*.scss'],
@@ -8,7 +10,7 @@ module.exports = (grunt) => {
         },
         js: {
             files: ['assets/js/**/*.js', '!assets/js/**/*.min.js', '!assets/js/**/*.js.map'],
-            tasks: ['sass'],
+            tasks: ['uglify'],
         },
         jsmin: {
             files: ['assets/js/**/*.min.js'],

@@ -1,6 +1,8 @@
 'use strict';
 
 module.exports = (grunt) => {
+    grunt.task.loadNpmTasks('grunt-contrib-uglify');
+
     return {
         main: {
             options: {

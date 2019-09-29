@@ -1,6 +1,8 @@
 'use strict';
 
 module.exports = (grunt) => {
+    grunt.task.loadNpmTasks('grunt-contrib-copy');
+
     const imgExt = ['gif','jpg','png'];
 
     return {

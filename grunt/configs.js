@@ -1,29 +1,50 @@
 'use strict';
 
 module.exports = (grunt) => {
-    const tasks = {
-        clean: 'grunt-contrib-clean',
-        copy:  'grunt-contrib-copy',
-        sass:  'grunt-contrib-sass',
-        uglify: 'grunt-contrib-uglify',
-        watch:  'grunt-contrib-watch',
-    };
-    const taskConfigs = {};
+    const constants = {
+        'pathRoot':  './',
+        'pathGrunt': './grunt/',
 
-    Object.keys(tasks).forEach(task => {
-        taskConfigs[task] = require('./tasks/' + task + '.js')(grunt);
-        grunt.loadNpmTasks(tasks[task]);
+        'pathJs':    './assets/js/',
+        'pathImage': './assets/images/',
+        'pathScss':  './assets/scss/',
+
+        'pathPublicCss':   './public/assets/css',
+        'pathPublicImage': './public/assets/images',
+        'pathPublicJs':    './public/assets/js',
+    };
+    Object.keys(constants).forEach(key => {
+        const value = constants[key];
+        grunt.config.set(key, value);
     });
 
-    require('./commands/addpage.js')(grunt);
-    require('./commands/build.js')(grunt);
-    require('./commands/dev.js')(grunt);
-    require('./commands/removepage.js')(grunt);
-    // require('./commands/webpage.js')(grunt);
-
-    const pkg = grunt.file.readJSON('./package.json');
-    return {
-        ...taskConfigs,
-        pkg,
+    const gruntTasks = {
+        build: ['build', 'compiles assets'],
+        dev:   ['dev', 'inits development; grunt build && grunt watch'],
+        watch: ['watch', 'watches assets and recompiles them'],
+        t0: '',
+        add:    ['addpage --name={name}', 'creates new templates for {name}.blade.php'],
+        remove: ['removepage --name={name}', 'removes an existing {name}.blade.php'],
     };
+    grunt.config.set('gruntTasks', gruntTasks);
+
+    const readTask = task => {
+        if(task === '') {
+            grunt.log.writeln('');
+        }
+        else {
+            const [ command, desc ] = task;
+
+            grunt.log.writeln(
+                '>>',
+                'grunt'['yellow'],
+                command['yellow'],
+                desc,
+            );
+        }
+    };
+    grunt.config.set('readTask', readTask);
+
+    const gruntInit = grunt.file.readJSON('./package.json');
+    grunt.config.set('gruntInit', gruntInit);
 };
