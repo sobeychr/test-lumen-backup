@@ -13,7 +13,7 @@ module.exports = (grunt) => {
             },
             files: [{
                 expand: true,
-                cwd: 'assets/js/',
+                cwd: 'assets/js/compiled/',
                 src: ['**/*.js', '!**/*.min.js', '!**/*.js.map'],
                 dest: 'public/assets/js/',
             }]
