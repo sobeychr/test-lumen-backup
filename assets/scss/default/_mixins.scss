@@ -1,0 +1,19 @@
+@mixin big {
+    @media only screen and (min-width: 700px) {
+        @content;
+    }
+}
+
+@mixin placeholder {
+    &.placeholder{ @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+}
+
+@mixin small {
+    @media only screen and (max-width: 699px) {
+        @content;
+    }
+}

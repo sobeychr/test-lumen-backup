@@ -6,16 +6,20 @@ use Laravel\Lumen\Routing\Controller as BaseController;
 
 class BasePageController extends BaseController
 {
+    protected $hasJquery = false;
+    protected $hasJs = false;
+
     protected $name = '';
 
     public function main():string
     {
         $this->beforeView();
 
-        $viewData = $this->viewData();
-        if(!isset($viewData['name'])) {
-            $viewData['name'] = $this->name;
-        }
+        $viewData = array_merge([
+            'hasJquery' => $this->hasJquery,
+            'hasJs' => $this->hasJs,
+            'name' => $this->name,
+        ], $this->viewData());
 
         $view = view('page.'.$this->name, $viewData);
 

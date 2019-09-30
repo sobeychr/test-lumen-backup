@@ -1,0 +1,19 @@
+textarea {
+    border: 1px solid #bbb;
+    background: #333;
+    color: #bbb;
+    font: 12px Courier, Helvetica, sans-serif;
+    padding: 3px;
+    outline: none;
+
+    &:hover,
+    &:focus {
+        border-color: #ddd;
+        color: #ddd;
+    }
+
+    @include placeholder {
+        color: #757575;
+        font-style: italic;
+    }
+}

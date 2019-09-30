@@ -1,7 +1,10 @@
+@import './inc-default/button';
+@import './inc-default/inputs';
+
 html, body {
     background: #131313;
     font-family: Arial, Helvetica, sans-serif;
-    color: #DDD;
+    color: #ddd;
 }
 
 a {
@@ -16,13 +19,18 @@ a {
 }
 
 aside {
+    background: #131313;
     height: 100%;
     left: 0;
-    padding: 20px;
+    padding: 10px;
     position: fixed;
     top: 0;
-    width: 250px;
+    width: 330px;
 
+    .aside__button {
+        display: none;
+    }
+    /*
     .aside__button {
         border: none;
         border-radius: 7px;
@@ -47,11 +55,26 @@ aside {
             display: none;
         }
     }
+    */
 }
 
 main {
      margin: 20px auto 0;
+     min-width: 100px;
      max-width: 950px;
      width: 98%;
      transition: width .2s linear;
+}
+
+ul, ol, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+pre {
+    background: #333;
+    border-left: 3px solid #7b00ff;
+    font: 12px Courier, Helvetica, sans-serif;
+    padding: 3px;
 }

@@ -1,4 +1,4 @@
-<a href='{{$name}}'>
-    <img src='assets/images/icons/{{$name}}.png' alt='{{$name}}' />
-    <span>{{$name}}</span>
+<a href='{{$link}}'>
+    <img src='assets/images/icons/{{$link}}.png' alt='{{$link}}' />
+    <span>{{$link}}</span>
 </a>

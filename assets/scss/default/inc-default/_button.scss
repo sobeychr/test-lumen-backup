@@ -1,0 +1,37 @@
+@mixin buttonState($state, $color, $hover) {
+    &.#{$state} {
+        border-color: $color;
+        color: $color;
+
+        &:hover {
+            border-color: $color;
+            color: $color;
+        }
+    }
+}
+
+button {
+    background: #262626;
+    border: 2px solid;
+    cursor: pointer;
+    margin: 3px;
+    padding: 3px;
+    outline: none;
+
+    &:hover {
+        background: #000;
+    }
+
+    &:not(.on):not(.off) {
+        border-color: #aaa;
+        color: #aaa;
+
+        &:hover {
+            border-color: #ddd;
+            color: #ddd;
+        }
+    }
+
+    @include buttonState('on', #09b013, #46f050);
+    @include buttonState('off', #961515, #d13636);
+}

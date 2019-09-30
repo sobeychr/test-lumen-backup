@@ -2,6 +2,6 @@
 
 @section('main')
     <nav>
-        @each('component.index-link', $links, 'name')
+        @each('component.index-link', $links, 'link')
     </nav>
 @endsection

@@ -1,1 +1,50 @@
 @import '_default.scss';
+
+aside {
+    @include small {
+        width: 100px;
+    }
+
+    li {
+        &:nth-child(n + 2) {
+            margin-top: 5px;
+        }
+
+        button {
+            width: calc(50% - 5px * 2);
+
+            @include big {
+                .cut {
+                    display: none;
+                }
+            }
+            @include small {
+                .long,
+                .status {
+                    display: none;
+                }
+            }
+
+            span.status {
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+main {
+    @include big {
+        margin-left: 350px;
+        width: calc(98% - 350px);
+    }
+    @include small {
+        margin-left: 120px;
+        width: calc(98% - 120px);
+    }
+
+    #in {
+        min-height: 150px;
+        width: 100%;
+    }
+}
