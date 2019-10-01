@@ -6,6 +6,7 @@ class ParserConfig extends BaseConfig
 {
     const BUTTONS = [
         [
+            'active' => true,
             'action' => 'base64',
             'cut' => 'B64',
             'long' => 'Base64',
@@ -13,6 +14,7 @@ class ParserConfig extends BaseConfig
             'off' => 'off',
         ],
         [
+            'active' => true,
             'action' => 'charcode',
             'cut' => 'CC',
             'long' => 'CharCode',
@@ -20,6 +22,7 @@ class ParserConfig extends BaseConfig
             'off' => 'off',
         ],
         [
+            'active' => false,
             'action' => 'encoding',
             'cut' => 'Enc',
             'long' => 'Encoding',
@@ -27,11 +30,19 @@ class ParserConfig extends BaseConfig
             'off' => 'off',
         ],
         [
+            'active' => true,
             'action' => 'json',
             'cut' => 'JS',
             'long' => 'Json',
             'on' => 'pretty',
             'off' => 'minified',
+        ],
+        [
+            'active' => true,
+            'action' => 'favorite',
+            'cut' => 'Fav',
+            'long' => 'Favorites',
+            'on' => 'find',
         ],
     ];
 }

@@ -14,8 +14,11 @@ class ParserController extends BasePageController
 
     protected function viewData():array
     {
+        $buttons = array_filter(ParserConfig::BUTTONS, function($entry) {
+            return isset($entry['active']) && $entry['active'] === true;
+        });
         return [
-            'buttons' => ParserConfig::BUTTONS,
+            'buttons' => $buttons,
         ];
     }
 }
