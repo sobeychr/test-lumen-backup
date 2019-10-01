@@ -23,13 +23,17 @@
         var _charCodeDecode = function(string) {
             var len = string.length,
                 num = '',
+                i = 0,
                 j = 3,
                 out = [];
 
-            for(var i=0; i<len; i+=j) {
+            for(i=0; i<len; i+=j) {
+                j = 3;
                 num = parseInt(string.substr(i, j));
-                j = num > 255 ? 2 : 3;
-                num = parseInt(string.substr(i, j));
+                if(num > 255) {
+                    j = 2;
+                    num = parseInt(string.substr(i, j));
+                }
                 out.push( String.fromCharCode(num) );
             }
 

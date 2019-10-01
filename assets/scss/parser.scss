@@ -1,6 +1,11 @@
 @import '_default.scss';
 
+$mainMarginSmall: 120px;
+$mainMarginBig: 290px;
+
 aside {
+    transition: width .2s linear;
+
     @include small {
         width: 100px;
     }
@@ -34,13 +39,15 @@ aside {
 }
 
 main {
+    transition: margin .2s linear, width .2s linear;
+
     @include big {
-        margin-left: 350px;
-        width: calc(98% - 350px);
+        margin-left: $mainMarginBig;
+        width: calc(98% - #{$mainMarginBig});
     }
     @include small {
-        margin-left: 120px;
-        width: calc(98% - 120px);
+        margin-left: $mainMarginSmall;
+        width: calc(98% - #{$mainMarginSmall});
     }
 
     #in {
