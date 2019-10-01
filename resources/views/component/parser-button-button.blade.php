@@ -1,5 +1,5 @@
-<button class='{{$class}}'>
+<button class='{{$class}}' data-action='{{$action}}'>
     <span class='cut'>{{$cut}}</span>
     <span class='long'>{{$long}}</span>
-    <span class='status'>{{$on}}</span>
+    <span class='status'>{{$label}}</span>
 </button>
