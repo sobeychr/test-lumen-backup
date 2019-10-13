@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = (grunt) => {
+    // Global constants
     const constants = {
         'pathRoot':  './',
         'pathGrunt': './grunt/',
@@ -18,6 +19,7 @@ module.exports = (grunt) => {
         grunt.config.set(key, value);
     });
 
+    // Available tasks with their command and description
     const gruntTasks = {
         build: ['build', 'compiles assets'],
         dev:   ['dev', 'inits development; builds then watches'],
@@ -27,23 +29,7 @@ module.exports = (grunt) => {
     };
     grunt.config.set('gruntTasks', gruntTasks);
 
-    const readTask = task => {
-        if(task === '') {
-            grunt.log.writeln('');
-        }
-        else {
-            const [ command, desc ] = task;
-
-            grunt.log.writeln(
-                '>>',
-                'grunt'['yellow'],
-                command['yellow'],
-                desc,
-            );
-        }
-    };
-    grunt.config.set('readTask', readTask);
-
+    // package.json
     const gruntInit = grunt.file.readJSON('./package.json');
     grunt.config.set('gruntInit', gruntInit);
 };

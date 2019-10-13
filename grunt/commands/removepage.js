@@ -1,10 +1,13 @@
 'use strict';
 
 module.exports = (grunt) => {
+    const ucFirst = grunt.config.get('ucFirst');
+    
     const root = './grunt/_data/webpage/template';
     const templates = [
         [root + '.blade.php', './resources/views/page/{name}.blade.php'],
-        [root + '.js', './assets/js/{name}.js'],
+        [root + '.controller.php', './app/Http/Controllers/page/{Name}.php'],
+        [root + '.js', './assets/js/pages/{name}.js'],
         [root + '.scss', './assets/scss/{name}.scss'],
     ];
 
@@ -12,10 +15,12 @@ module.exports = (grunt) => {
 
     grunt.registerTask('removepage', () => {
         if(newName) {
-            grunt.log.writeln('deleting webpage "'.yellow, delName);
+            grunt.log.writeln('deleting webpage "'.yellow, newName);
             templates.forEach(entry => {
                 const [, dest] = entry;
-                const path = dest.replace('{name}', delName);
+                const path = dest
+                    .replace('{name}', newName)
+                    .replace('{Name}', ucFirst(newName));
                 grunt.file.delete(path);
             });
         }
@@ -23,7 +28,7 @@ module.exports = (grunt) => {
             grunt.log.errorlns('Unable to remove webpage');
             grunt.log.writeln(
                 '>>',
-                'grunt webpage --name={name}'.yellow,
+                'grunt removepage --name={name}'.yellow,
                 'removes an existing {name}.blade.php',
             );
         }
