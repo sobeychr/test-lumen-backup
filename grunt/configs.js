@@ -18,10 +18,10 @@ module.exports = (grunt) => {
         grunt.config.set(key, value);
     });
 
+    /*
     const gruntTasks = {
         build: ['build', 'compiles assets'],
-        dev:   ['dev', 'inits development; grunt build && grunt watch'],
-        watch: ['watch', 'watches assets and recompiles them'],
+        dev:   ['dev', 'inits development; builds then watches'],
         t0: '',
         add:    ['addpage --name={name}', 'creates new templates for {name}.blade.php'],
         remove: ['removepage --name={name}', 'removes an existing {name}.blade.php'],
@@ -44,6 +44,7 @@ module.exports = (grunt) => {
         }
     };
     grunt.config.set('readTask', readTask);
+    */
 
     const gruntInit = grunt.file.readJSON('./package.json');
     grunt.config.set('gruntInit', gruntInit);

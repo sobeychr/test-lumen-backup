@@ -15,5 +15,49 @@ module.exports = (grunt) => {
     });
 
     const gruntInit = grunt.config.get('gruntInit');
+    grunt.log.writeln('gruntInit', gruntInit);
     grunt.config.init(gruntInit);
 };
+
+/*
+'use strict';
+
+module.exports = (grunt) => {
+    const pkg = grunt.file.readJSON('package.json');
+    const configs = { pkg };
+
+    grunt.loadNpmTasks('grunt-browserify');
+    grunt.loadNpmTasks('grunt-exorcise');
+
+    configs.browserify = {
+        options: {
+            browserifyOptions: {
+                debug: true,
+                watch: false,
+            },
+            transform: [
+                ['babelify', {presets: ['@babel/preset-env']}]
+            ],
+        },
+        dist: {
+            files: {
+                'dist/index.js': 'src/index.js',
+            }
+        }
+    };
+    configs.exorcise = {
+        dist: {
+            files: {
+                'dist/index.js.map': 'dist/index.js',
+            }
+        }
+    };
+
+    grunt.initConfig(configs);
+
+    grunt.registerTask('default', () => {
+        grunt.log.writelns('>> default task');
+        grunt.task.run(['browserify', 'exorcise']);
+    });
+};
+*/

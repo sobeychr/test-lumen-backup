@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = (grunt) => {
+    /*
     const pathGrunt = grunt.config.get('pathGrunt');
     const pathCommands = './commands/';
     const pathTasks = './tasks/';
@@ -16,5 +17,13 @@ module.exports = (grunt) => {
         gruntInit[task] = require(pathTasks + filename)(grunt);
     });
 
+    grunt.config.set('gruntInit', gruntInit);
+    */
+
+    const gruntInit = grunt.config.get('gruntInit');
+
+    gruntInit.browserify = require('./tasks/browserify.js')(grunt);
+    gruntInit.exorcise = require('./tasks/exorcise.js')(grunt);
+    
     grunt.config.set('gruntInit', gruntInit);
 };
