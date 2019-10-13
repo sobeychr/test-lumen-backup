@@ -9,6 +9,7 @@ module.exports = (grunt) => {
                 expand: true,
                 cwd: 'public/assets/js/',
                 src: ['**/*.js', '!**/*.min.js', '!**/*.js.map'],
+                dest: 'public/assets/js/',
                 ext: '.js.map',
             }],
         }

@@ -9,14 +9,19 @@ module.exports = (grunt) => {
                 debug: true,
                 watch: false,
             },
-            transform: [
-                ['babelify', {presets: ['@babel/preset-env']}]
-            ],
         },
         js: {
-            files: {
-                'dist/index.js' : 'assets/**/*.js',
+            options: {
+                transform: [
+                    ['babelify', {presets: ['@babel/preset-env']}]
+                ],
             },
+            files: [{
+                expand: true,
+                cwd: 'assets/js/pages/',
+                src: ['**/*.js', '!**/*.min.js', '!**/*.js.map'],
+                dest: 'public/assets/js/',
+            }],
         },
     };
 };

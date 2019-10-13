@@ -18,7 +18,6 @@ module.exports = (grunt) => {
         grunt.config.set(key, value);
     });
 
-    /*
     const gruntTasks = {
         build: ['build', 'compiles assets'],
         dev:   ['dev', 'inits development; builds then watches'],
@@ -44,7 +43,6 @@ module.exports = (grunt) => {
         }
     };
     grunt.config.set('readTask', readTask);
-    */
 
     const gruntInit = grunt.file.readJSON('./package.json');
     grunt.config.set('gruntInit', gruntInit);
