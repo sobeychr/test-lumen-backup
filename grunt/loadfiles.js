@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (grunt) => {
-    const pathGrunt = grunt.config.get('pathGrunt');
+    const pathGrunt = './grunt/';
     const pathCommands = './commands/';
     const pathTasks = './tasks/';
 

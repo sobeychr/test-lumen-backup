@@ -3,17 +3,25 @@
 module.exports = (grunt) => {
     grunt.task.loadNpmTasks('grunt-contrib-watch');
 
+    const {
+        fileScss, srcScss,
+        fileJs, fileJsMin, srcJs,
+    } = grunt.config.get('globals');
+    const cssFiles = fileScss.map(entry => srcScss + entry);
+    const jsFiles = fileJs.map(entry => srcJs + entry);
+    const jsMinFiles = fileJsMin.map(entry => srcJs + entry);
+
     return {
         css: {
-            files: ['assets/scss/**/*.scss'],
+            files: cssFiles,
             tasks: ['sass'],
         },
         js: {
-            files: ['assets/js/**/*.js', '!assets/js/**/*.min.js', '!assets/js/**/*.js.map'],
+            files: jsFiles,
             tasks: ['js'],
         },
         jsmin: {
-            files: ['assets/js/**/*.min.js'],
+            files: jsMinFiles,
             tasks: ['copy'],
         },
     };

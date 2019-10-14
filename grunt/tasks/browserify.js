@@ -3,6 +3,8 @@
 module.exports = (grunt) => {
     grunt.task.loadNpmTasks('grunt-browserify');
 
+    const { destJs, fileJs, srcJs } = grunt.config.get('globals');
+
     return {
         options: {
             browserifyOptions: {
@@ -18,9 +20,9 @@ module.exports = (grunt) => {
             },
             files: [{
                 expand: true,
-                cwd: 'assets/js/pages/',
-                src: ['**/*.js', '!**/*.min.js', '!**/*.js.map'],
-                dest: 'public/assets/js/',
+                cwd: srcJs,
+                src: fileJs,
+                dest: destJs,
             }],
         },
     };

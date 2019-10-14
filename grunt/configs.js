@@ -2,21 +2,19 @@
 
 module.exports = (grunt) => {
     // Global constants
-    const constants = {
-        'pathRoot':  './',
-        'pathGrunt': './grunt/',
+    grunt.config.set('globals', {
+        fileJs:    ['**/*.js', '!component/**', '!**/*.min.js', '!**/*.map', '!**/*.backup'],
+        fileJsMin: ['**/*.min.js', '!component/**', '!**/*.map', '!**/*.backup'],
 
-        'pathJs':    './assets/js/',
-        'pathImage': './assets/images/',
-        'pathScss':  './assets/scss/',
+        fileScss: ['**/*.scss', '!**/*.backup'],
 
-        'pathPublicCss':   './public/assets/css',
-        'pathPublicImage': './public/assets/images',
-        'pathPublicJs':    './public/assets/js',
-    };
-    Object.keys(constants).forEach(key => {
-        const value = constants[key];
-        grunt.config.set(key, value);
+        destJs:   './public/assets/js/',
+        destImg:  './public/assets/images/',
+        destScss: './public/assets/css/',
+
+        srcJs:   './assets/js/',
+        srcImg:  './assets/images/',
+        srcScss: './assets/scss/',
     });
 
     // Available tasks with their command and description

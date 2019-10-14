@@ -3,6 +3,8 @@
 module.exports = (grunt) => {
     grunt.task.loadNpmTasks('grunt-contrib-sass');
 
+    const { destScss, fileScss, srcScss } = grunt.config.get('globals');
+
     return {
         main: {
             options: {
@@ -16,9 +18,9 @@ module.exports = (grunt) => {
             },
             files: [{
                 expand: true,
-                cwd: 'assets/scss',
-                src: ['**/*.scss'],
-                dest: 'public/assets/css/',
+                cwd: srcScss,
+                src: fileScss,
+                dest: destScss,
                 ext: '.css',
             }]
         }

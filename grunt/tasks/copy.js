@@ -3,20 +3,24 @@
 module.exports = (grunt) => {
     grunt.task.loadNpmTasks('grunt-contrib-copy');
 
+    const {
+        destJs, fileJsMin, srcJs,
+        destImg, srcImg,
+    } = grunt.config.get('globals');
     const imgExt = ['gif','jpg','png'];
 
     return {
         jsmin: {
             expand: true,
-            cwd: 'assets/js/',
-            src: ['**/*.min.js', '!**/*.js.map'],
-            dest: 'public/assets/js/',
+            cwd: srcJs,
+            src: fileJsMin,
+            dest: destJs,
         },
         image: {
             expand: true,
-            cwd: 'assets/images/',
+            cwd: srcImg,
             src: ['**/*.{' + imgExt.join(',') + '}'],
-            dest: 'public/assets/images/',
+            dest: destImg,
         },
     };
 };
