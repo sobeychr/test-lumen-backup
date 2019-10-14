@@ -1,7 +1,6 @@
 'use strict';
 
 module.exports = (grunt) => {
-    const gruntTasks = grunt.config.get('gruntTasks');
     const readTask = grunt.config.get('readTask');
     const newName = grunt.option('name');
 
@@ -12,7 +11,7 @@ module.exports = (grunt) => {
         }
         else {
             grunt.log.errorlns('Unable to remove webpage');
-            readTask(gruntTasks.remove);
+            readTask('remove');
         }
     });
 };

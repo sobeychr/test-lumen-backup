@@ -9,7 +9,7 @@ module.exports = (grunt) => {
     grunt.registerTask('default', () => {
         grunt.log.errorlns('No task selected');
         Object.keys(gruntTasks).forEach(key => {
-            readTask(gruntTasks[key]);
+            readTask(key);
         });
     });
     
