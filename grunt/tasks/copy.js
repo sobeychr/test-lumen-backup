@@ -5,10 +5,7 @@ module.exports = (grunt) => {
 
     const ucFirst = grunt.config.get('ucFirst');
     
-    const {
-        destJs, fileJsMin, srcJs,
-        destImg, srcImg,
-    } = grunt.config.get('globals');
+    const { destJs, destImg, srcImg } = grunt.config.get('globals');
     const imgExt = ['gif','jpg','png'];
     const rootTemplate = './grunt/_data/webpage/template';
 
@@ -30,12 +27,9 @@ module.exports = (grunt) => {
 
     return {
         jsmin: {
-            files: [{
-                expand: true,
-                cwd: srcJs,
-                src: fileJsMin,
-                dest: destJs,
-            }],
+            files: {
+                [destJs + 'jquery.min.js']: './node_modules/jquery/dist/jquery.min.js',
+            },
         },
         image: {
             files: [{

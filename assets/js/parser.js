@@ -1,4 +1,4 @@
-import { base64, charCode, encoding } from './component/encoder.js';
+import { base64, charCode, encoding } from 'encoder';
 
 (function($, undefined) {
     'use strict';
@@ -23,11 +23,11 @@ import { base64, charCode, encoding } from './component/encoder.js';
 
         const bound = ()  => {
             $(_config.sel).on('click', function() {
-                var $this  = $(this),
-                    action = $this.attr(_config.attr),
-                    isOn   = $this.hasClass('on'),
-                    input  = $('#in').val(),
-                    output = '';
+                const $this  = $(this),
+                      action = $this.attr(_config.attr),
+                      isOn   = $this.hasClass('on'),
+                      input  = $('#in').val();
+                let output = '';
 
                 if(input.toString().length === 0) {
                     console.warn('Empty input for', action);

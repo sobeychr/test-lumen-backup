@@ -9,7 +9,6 @@ module.exports = (grunt) => {
     } = grunt.config.get('globals');
     const cssFiles = fileScss.map(entry => srcScss + entry);
     const jsFiles = fileJs.map(entry => srcJs + entry);
-    const jsMinFiles = fileJsMin.map(entry => srcJs + entry);
 
     return {
         css: {
@@ -19,10 +18,6 @@ module.exports = (grunt) => {
         js: {
             files: jsFiles,
             tasks: ['js'],
-        },
-        jsmin: {
-            files: jsMinFiles,
-            tasks: ['copy'],
         },
     };
 };
