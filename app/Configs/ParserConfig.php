@@ -15,7 +15,7 @@ class ParserConfig extends BaseConfig
         ],
         [
             'active' => true,
-            'action' => 'charcode',
+            'action' => 'charCode',
             'cut' => 'CC',
             'long' => 'CharCode',
             'on' => 'on',
@@ -37,6 +37,7 @@ class ParserConfig extends BaseConfig
             'on' => 'pretty',
             'off' => 'minified',
         ],
+        /*
         [
             'active' => true,
             'action' => 'favorite',
@@ -44,5 +45,6 @@ class ParserConfig extends BaseConfig
             'long' => 'Favorites',
             'on' => 'find',
         ],
+        */
     ];
 }

@@ -1,73 +1,38 @@
-(function($, undefined){
-    'use strict';
+const base64 = (string, encode=true) => encode ? btoa(string) : atob(string);
 
-    window.encoder = (function() {
+const charCode = (string, encode=true) => encode ? _charCodeEncode(string) : _charCodeDecode(string);
+const _charCodeEncode = string => {
+    var len = string.length,
+        out = [];
+    for(var i=0; i<len; i++) {
+        out.push( string.charCodeAt(i) );
+    }
+    return out.join('');
+}
+const _charCodeDecode = (string) => {
+    var len = string.length,
+        num = '',
+        i = 0,
+        j = 3,
+        out = [];
 
-        var base64 = function(string, encode) {
-            if(typeof encode === 'undefined') encode = true;
-            return encode ? btoa(string) : atob(string);
-        };
-
-        var charCode = function(string, encode) {
-            if(typeof encode === 'undefined') encode = true;
-            return encode ? _charCodeEncode(string) : _charCodeDecode(string);
-        };
-        var _charCodeEncode = function(string) {
-            var len = string.length,
-                out = [];
-            for(var i=0; i<len; i++) {
-                out.push( string.charCodeAt(i) );
-            }
-            return out.join('');
+    for(i=0; i<len; i+=j) {
+        j = 3;
+        num = parseInt(string.substr(i, j));
+        if(num > 255) {
+            j = 2;
+            num = parseInt(string.substr(i, j));
         }
-        var _charCodeDecode = function(string) {
-            var len = string.length,
-                num = '',
-                i = 0,
-                j = 3,
-                out = [];
+        out.push( String.fromCharCode(num) );
+    }
 
-            for(i=0; i<len; i+=j) {
-                j = 3;
-                num = parseInt(string.substr(i, j));
-                if(num > 255) {
-                    j = 2;
-                    num = parseInt(string.substr(i, j));
-                }
-                out.push( String.fromCharCode(num) );
-            }
+    return out.join('');
+};
 
-            return out.join('');
-        };
+const encoding = (string, encode=true) => string;
 
-        var encoding = function(string, encode) {
-            return string;
-        };
-
-        var json = function(string, encode) {
-            if(typeof encode === 'undefined') encode = true;
-            var output = string.substring( string.indexOf('{') );
-            output = output.substring(0, output.lastIndexOf('}')+1 );
-
-            var json;
-            try {
-                json = JSON.parse(output);
-            }
-            catch(err) {
-                console.error('Unable to parse JSON', err);
-                console.warn('Invalid JSon string', output);
-            }
-
-            return typeof json === 'object'
-                ? JSON.stringify(json, null, encode ? 4 : 0)
-                : '! invalid';
-        }
-
-        return {
-            base64: base64,
-            charcode: charCode,
-            encoding: encoding,
-            json: json,
-        };
-    })();
-})(jQuery);
+export {
+    base64,
+    charCode,
+    encoding,
+};
