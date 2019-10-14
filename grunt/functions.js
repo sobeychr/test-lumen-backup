@@ -1,6 +1,14 @@
 'use strict';
 
 module.exports = (grunt) => {
+    // Add configs to gruntInit
+    const addInit = (key, value) => {
+        const gruntInit = grunt.config.get('gruntInit');
+        gruntInit[key] = value;
+        grunt.config.set('gruntInit', gruntInit);
+    };
+    grunt.config.set('addInit', addInit);
+
     // Uppercase first letter
     const ucFirst = string => string.substring(0,1).toUpperCase() + string.substring(1);
     grunt.config.set('ucFirst', ucFirst);

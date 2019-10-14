@@ -8,12 +8,13 @@ module.exports = (grunt) => {
 
     grunt.registerTask('default', () => {
         grunt.log.errorlns('No task selected');
-        for(let i in gruntTasks)
-        {
-            readTask(gruntTasks[i]);
-        }
+        Object.keys(gruntTasks).forEach(key => {
+            readTask(gruntTasks[key]);
+        });
     });
-
-    const gruntInit = grunt.config.get('gruntInit');
-    grunt.config.init(gruntInit);
+    
+    grunt.config.init({
+        ...grunt.config.get('gruntInit'),
+        pkg: grunt.file.readJSON('./package.json'),
+    });
 };

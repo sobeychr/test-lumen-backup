@@ -27,7 +27,6 @@ module.exports = (grunt) => {
     };
     grunt.config.set('gruntTasks', gruntTasks);
 
-    // package.json
-    const gruntInit = grunt.file.readJSON('./package.json');
-    grunt.config.set('gruntInit', gruntInit);
+    // Grunt Init configs
+    grunt.config.set('gruntInit', {});
 };

@@ -6,10 +6,15 @@ module.exports = (grunt) => {
     return {
         assets: ['./public/assets/**/*'],
         sass:   ['./grunt/.sass-cache/**/*'],
-        js:     ['./assets/js/compiled'],
         storage: [
             './storage/framework/views/**/*.php',
             './storage/logs/**/*.log',
+        ],
+        template: [
+            './resources/views/page/<%= newName %>.blade.php',
+            './app/Http/Controllers/page/<%= newUcName %>.php',
+            './assets/js/<%= newName %>.js',
+            './assets/scss/<%= newName %>.scss',
         ],
     };
 };
