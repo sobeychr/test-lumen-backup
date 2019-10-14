@@ -5,10 +5,10 @@ module.exports = (grunt) => {
 
     const {
         fileScss, srcScss,
-        fileJs, fileJsMin, srcJs,
+        fileJsWatch, srcJs,
     } = grunt.config.get('globals');
     const cssFiles = fileScss.map(entry => srcScss + entry);
-    const jsFiles = fileJs.map(entry => srcJs + entry);
+    const jsFiles = fileJsWatch.map(entry => srcJs + entry);
 
     return {
         css: {
@@ -16,7 +16,7 @@ module.exports = (grunt) => {
             tasks: ['sass'],
         },
         js: {
-            files: jsFiles,
+            files: fileJsWatch,
             tasks: ['js'],
         },
     };

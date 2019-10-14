@@ -3,10 +3,9 @@
 module.exports = (grunt) => {
     // Global constants
     grunt.config.set('globals', {
-        fileJs:    ['**/*.js', '!component/**', '!**/*.min.js', '!**/*.map', '!**/*.backup'],
-        fileJsMin: ['**/*.min.js', '!component/**', '!**/*.map', '!**/*.backup'],
-
-        fileScss: ['**/*.scss', '!**/*.backup'],
+        fileJs:      ['**/*.js', '!component/**', '!**/*.min.js', '!**/*.map', '!**/*.backup'],
+        fileJsWatch: ['**/*.js', '!**/*.map', '!**/*.backup'],
+        fileScss:    ['**/*.scss', '!**/*.backup'],
 
         destJs:   './public/assets/js/',
         destImg:  './public/assets/images/',
