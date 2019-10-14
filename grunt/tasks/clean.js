@@ -7,14 +7,16 @@ module.exports = (grunt) => {
 
     const cli = grunt.cli.tasks;
     const newName = grunt.option('name') || '';
-    const template = [];
+    let template = [];
 
     if(cli.includes('removepage') && newName) {
         const newUcName = ucFirst(newName);
-        template.push('./resources/views/page/' + newName + '.blade.php');
-        template.push('./app/Http/Controllers/page/' + newUcName + '.php');
-        template.push('./assets/js/' + newName + '.js');
-        template.push('./assets/scss/' + newName + '.scss');
+        template = [
+            './resources/views/page/' + newName + '.blade.php',
+            './app/Http/Controllers/page/' + newUcName + '.php',
+            './assets/js/' + newName + '.js',
+            './assets/scss/' + newName + '.scss',
+        ];
     }
 
     return {

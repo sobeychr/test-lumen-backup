@@ -4,6 +4,7 @@ module.exports = (grunt) => {
     grunt.task.loadNpmTasks('grunt-contrib-copy');
 
     const ucFirst = grunt.config.get('ucFirst');
+    
     const {
         destJs, fileJsMin, srcJs,
         destImg, srcImg,
@@ -13,15 +14,17 @@ module.exports = (grunt) => {
 
     const cli = grunt.cli.tasks;
     const newName = grunt.option('name') || '';
-    const template = {};
+    let template = {};
 
     if(cli.includes('addpage') && newName) {
         const newUcName = ucFirst(newName);
-        template.files = {
-            ['./resources/views/page/' + newName + '.blade.php']: rootTemplate + '.blade.php',
-            ['./app/Http/Controllers/page/' + newUcName + '.php']:  rootTemplate + '.controller.php',
-            ['./assets/js/' + newName + '.js']:     rootTemplate + '.js',
-            ['./assets/scss/' + newName + '.scss']: rootTemplate + '.scss',
+        template = {
+            files: {
+                ['./resources/views/page/' + newName + '.blade.php']: rootTemplate + '.blade.php',
+                ['./app/Http/Controllers/page/' + newUcName + '.php']:  rootTemplate + '.controller.php',
+                ['./assets/js/' + newName + '.js']:     rootTemplate + '.js',
+                ['./assets/scss/' + newName + '.scss']: rootTemplate + '.scss',
+            },
         };
     }
 
