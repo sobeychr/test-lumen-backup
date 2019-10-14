@@ -16,7 +16,6 @@ class BasePageController extends BaseController
         $this->beforeView();
 
         $viewData = array_merge([
-            'hasJquery' => $this->hasJquery,
             'hasJs' => $this->hasJs,
             'name' => $this->name,
         ], $this->viewData());

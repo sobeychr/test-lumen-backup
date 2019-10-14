@@ -7,9 +7,6 @@
         <link rel='icon' href='assets/images/icons/{{$name}}.png' type='image/png'/>
         <link rel='shortcut icon' href='assets/images/icons/{{$name}}.png' type='image/png'/>
         <link rel='stylesheet' type='text/css' href='assets/css/{{$name}}.css#{{$time}}'/>
-        @if($hasJquery)
-            <script src='assets/js/jquery.min.js'></script>
-        @endif
         @if($hasJs)
             <script src='assets/js/{{$name}}.js#{{$time}}'></script>
         @endif

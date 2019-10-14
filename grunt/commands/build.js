@@ -3,6 +3,6 @@
 module.exports = (grunt) => {
     grunt.registerTask('build', () => {
         grunt.log.writeln('building default assets'.yellow);
-        grunt.task.run(['copy:jsmin', 'copy:image', 'sass', 'js']);
+        grunt.task.run(['copy:image', 'sass', 'js']);
     });
 };

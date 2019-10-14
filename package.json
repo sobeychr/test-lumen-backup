@@ -13,7 +13,8 @@
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-exorcise": "^2.1.1",
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "lodash": "^4.17.15"
   },
   "dependencies": {}
 }

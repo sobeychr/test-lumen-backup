@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { base64, charCode, encoding } from 'encoder';
 
 (function($, undefined) {
@@ -51,4 +52,4 @@ import { base64, charCode, encoding } from 'encoder';
     $(function(){
         parser.init();
     });
-})(jQuery);
+})($);
