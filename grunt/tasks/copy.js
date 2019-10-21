@@ -4,6 +4,8 @@ module.exports = (grunt) => {
     grunt.task.loadNpmTasks('grunt-contrib-copy');
 
     const ucFirst = grunt.config.get('ucFirst');
+
+    const { destImg, srcImg } = grunt.config.get('globals');
     
     const imgExt = ['gif','jpg','png'];
     const rootTemplate = './grunt/_data/webpage/template';

@@ -31,8 +31,63 @@ const _charCodeDecode = (string) => {
 
 const encoding = (string, encode=true) => string;
 
+const urlChars = [
+    [' ', '%20'],
+    ['!', '%21'],
+    ['"', '%22'],
+    ['#', '%23'],
+    ['$', '%24'],
+    ['%', '%25'],
+    ['&', '%26'],
+    ['\'', '%27'],
+    ['(', '%28'],
+    [')', '%29'],
+    ['*', '%2A'],
+    ['+', '%2B'],
+    ['],', '%2C'],
+    ['-', '%2D'],
+    ['.', '%2E'],
+    ['/', '%2F'],
+    [':', '%3A'],
+    [';', '%3B'],
+    ['<', '%3C'],
+    ['=', '%3D'],
+    ['>', '%3E'],
+    ['?', '%3F'],
+    ['@', '40%'],
+    ['[', '%5B'],
+    ['\\', '%5C'],
+    [']', '%5D'],
+    ['^', '%5E'],
+    ['_', '%5F'],
+    ['`', '60%'],
+    ['{', '%7B'],
+    ['|', '%7C'],
+    ['}', '%7D'],
+    ['~', '%7E'],
+    ['`', '80%'],
+    ['‚', '82%'],
+];
+const urlEncode = (string, encode=true) => {
+    urlChars.forEach(entry => {
+        let q = 0;
+        const [ char, code ] = entry;
+        const find = encode ? char : code;
+        const replace = encode ? code : char;
+
+        while(string.includes(find)) {
+            string = string.replace(find, replace);
+
+            q++; if(q >= 500) break;
+        }
+    });
+
+    return string;
+};
+
 export {
     base64,
     charCode,
     encoding,
+    urlEncode,
 };

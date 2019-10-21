@@ -37,6 +37,13 @@ class ParserConfig extends BaseConfig
             'on' => 'pretty',
             'off' => 'minified',
         ],
+        [
+            'active' => true,
+            'action' => 'url',
+            'cut' => 'URL',
+            'long' => 'Url',
+            'off' => 'decode',
+        ],
         /*
         [
             'active' => true,
