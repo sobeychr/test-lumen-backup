@@ -2,7 +2,7 @@ import { leadingZeros } from 'number';
 
 const newDate = timestamp => {
     const d = new Date();
-    d.setUTCMilliseconds(timestamp);
+    d.setTime(timestamp * 1000);
     return d;
 }
 
@@ -10,7 +10,7 @@ const getDate = timestamp => {
     const d = newDate(timestamp);
     return [
         leadingZeros(d.getFullYear(), 4),
-        leadingZeros(d.getMonth(), 2),
+        leadingZeros(d.getMonth() + 1, 2),
         leadingZeros(d.getDate(), 2),
     ].join('-');
 };

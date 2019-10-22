@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import { get } from 'api';
 import { getDateTime } from 'date';
-import { replaceAll } from 'string';
+import { cut, replaceAll } from 'string';
 
 (function($, doc, undefined) {
     'use strict';
@@ -9,31 +9,42 @@ import { replaceAll } from 'string';
     const sort = (function() {
 
         const _configs = {
+            selClass: 'selected',
+
             selFolder: '.folder-select li',
-            selFolderClass: 'selected',
             selUpdateList: 'input[name="folder"], input[name="order"]',
 
             load: {
-                selFolder: 'input[name="folder"]',
-                selOrder: 'input[name="order"]',
+                selFolder: 'input[name="folder"]:checked',
+                selOrder: 'input[name="order"]:checked',
             },
 
             populate: {
+                listing: '#listing',
+                maxName: 21,
+                selList: '#listing li:not(.template)',
                 selTemplate: '#listing .template:first',
             },
         };
 
         const init = () => {
-            bound();
+            $(doc).on('click', _configs.selFolder, onSelectFolder);
+            $(doc).on('change', _configs.selUpdateList, onUpdateList);
             onUpdateList();
         };
 
-        const bound = () => {
-            $(doc).on('click', _configs.selFolder, onSelectFolder);
-            $(doc).on('change', _configs.selUpdateList, onUpdateList);
+        const boundList = (bound=true) => {
+            if(bound) {
+                $(doc).on('click', _configs.populate.selList, onSelectList);
+            }
+            else {
+                $(doc).off('click', _configs.populate.selList);
+            }
         };
 
         const loadStart = () => {
+            boundList(false);
+            $(_configs.populate.selList).remove();
             const folder = $(_configs.load.selFolder).val();
             const order = $(_configs.load.selOrder).val();
             const path = 'api/sort/list/' + folder + '/' + order;
@@ -55,21 +66,27 @@ import { replaceAll } from 'string';
                 let html = template[0].outerHTML.toString();
                 html = replaceAll(html, '{date}', getDateTime(date));
                 html = replaceAll(html, '{key}', key);
-                html = replaceAll(html, '{name}', name);
+                html = replaceAll(html, '{fullname}', name);
+                html = replaceAll(html, '{name}', cut(name, _configs.populate.maxName));
                 html = replaceAll(html, '{path}', folderPath + name);
                 html = replaceAll(html, '{timestamp}', date);
 
                 // console.log('html', html);
-                $('#listing').append(html);
+                $(_configs.populate.listing).append(html);
+                boundList();
             });
         };
 
         const onSelectFolder = (e) => {
             const $ctarget = $(e.currentTarget);
-            if(!$ctarget.hasClass(_configs.selFolderClass)) {
-                $ctarget.siblings('.' + _configs.selFolderClass).removeClass(_configs.selFolderClass);
-                $ctarget.addClass(_configs.selFolderClass);
+            if(!$ctarget.hasClass(_configs.selClass)) {
+                $ctarget.siblings().removeClass(_configs.selClass);
+                $ctarget.addClass(_configs.selClass);
             }
+        };
+
+        const onSelectList = (e) => {
+
         };
 
         const onUpdateList = () => {

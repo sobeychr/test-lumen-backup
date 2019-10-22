@@ -29,13 +29,13 @@ class SortController extends BaseController
         {
             if($file->isDir()) continue;
             $files[] = [
-                self::KEY_DATE => $file->getMTime(),
+                self::KEY_DATE => $file->getCTime(),
                 self::KEY_NAME => $file->getFilename(),
             ];
         }
         $total = count($files);
-        $files = array_slice($files, 0, min($total, self::MAX));
         usort($files, [$this, 'sortField']);
+        $files = array_slice($files, 0, min($total, self::MAX));
         
         return response()->json([
             'folder' => $folder,

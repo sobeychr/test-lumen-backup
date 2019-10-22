@@ -5,28 +5,40 @@
 
     <form action='' method='post'>
         @component('component.sort-folder-select', [
+                'entries' => $folder,
+                'first' => true,
                 'legend' => 'List Folder',
                 'listName' => 'folder',
-                'entries' => $folder,
             ])
         @endcomponent
         @component('component.sort-folder-select', [
+                'entries' => $order,
+                'first' => true,
                 'legend' => 'Order',
                 'listName' => 'order',
-                'entries' => $order,
             ])
         @endcomponent
     </form>
 
-    <ul id='listing'>
-        <li class='template'>
-            <span class='name'>{name}</span>
-            <span class='date'>{date}</span>
-            <input type='hidden' name='date-{key}' value='{timestamp}'/>
-            <input type='hidden' name='name-{key}' value='{name}'/>
-            <input type='hidden' name='path-{key}' value='{path}'/>
-        </li>
-    </ul>
+    <div>
+        <ul id='listing'>
+            <li class='template'>
+                <span class='name'>{name}</span>
+                <span class='date'>{date}</span>
+                <input type='hidden' name='date-{key}' value='{timestamp}'/>
+                <input type='hidden' name='name-{key}' value='{fullname}'/>
+                <input type='hidden' name='path-{key}' value='{path}'/>
+            </li>
+        </ul>
+
+        @component('component.sort-folder-select', [
+                'entries' => $category,
+                'first' => false,
+                'legend' => 'Category',
+                'listName' => 'category',
+            ])
+        @endcomponent
+    </div>
 
     <div id='popup' class='off'>
         <video width='480' height='320' controls>

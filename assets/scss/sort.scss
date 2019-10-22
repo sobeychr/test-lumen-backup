@@ -28,6 +28,43 @@
     }
 }
 
+#listing {
+    float: left;
+    margin-right: 15%;
+    max-width: 200px;
+
+    li {
+        cursor: pointer;    
+        padding: 3px 0 3px 10px;
+
+        &:nth-child(n + 2) {
+            margin-top: 7px;
+        }
+
+        &:hover {
+            box-shadow: 0 0 3px rgba(255,255,255, 0.6);
+        }
+
+        .name {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .date {
+            color: #909090;
+            display: block;
+            font-size: 12px;
+            font-style: italic;
+        }
+
+        &.selected {
+            &:before {
+                content: '>';
+            }
+        }
+    }
+}
+
 #popup {
     &.off {
         display: none;

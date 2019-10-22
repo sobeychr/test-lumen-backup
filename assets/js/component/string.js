@@ -1,4 +1,9 @@
-const fillString = (string, fill, length=2, append=true) => {
+const cut = (string, length, cut='...') => {
+    if(string.length < length) return string;
+    return string.substring(0, length - cut.length) + cut;
+};
+
+const fill = (string, fill, length=2, append=true) => {
     let q = 0;
     while(string.length < length) {
         string = append ? string + fill : fill + string;
@@ -33,6 +38,7 @@ const replaceAll = (string, find, replace) => {
 };
 
 export {
-    fillString,
+    cut,
+    fill,
     replaceAll,
 };
