@@ -52,8 +52,6 @@ import { cut, replaceAll } from 'string';
         };
 
         const loadEnd = (data) => {
-            // console.log('[sort]', '[loadEnd]', data);
-
             const folder = $(_configs.load.selFolder).val();
             const folderPath = $('input[name="folder-' + folder + '"]').val();
             const template = $(_configs.populate.selTemplate).clone();
@@ -71,10 +69,14 @@ import { cut, replaceAll } from 'string';
                 html = replaceAll(html, '{path}', folderPath + name);
                 html = replaceAll(html, '{timestamp}', date);
 
-                // console.log('html', html);
                 $(_configs.populate.listing).append(html);
                 boundList();
             });
+        };
+
+        const setVideo = fullpath => {
+            $('#popup').removeClass('off');
+            $('#popup video').attr('src', fullpath);
         };
 
         const onSelectFolder = (e) => {
@@ -86,7 +88,12 @@ import { cut, replaceAll } from 'string';
         };
 
         const onSelectList = (e) => {
-
+            const $ctarget = $(e.currentTarget);
+            if(!$ctarget.hasClass(_configs.selClass)) {
+                $ctarget.siblings().removeClass(_configs.selClass);
+                $ctarget.addClass(_configs.selClass);
+                setVideo('file:///' + $ctarget.find('.path:first').val());
+            }
         };
 
         const onUpdateList = () => {

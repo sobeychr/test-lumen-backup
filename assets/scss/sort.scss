@@ -1,5 +1,11 @@
 @import '_default.scss';
 
+$colorSelected: #00ffff;
+
+main {
+    position: relative;
+}
+
 .folder-select {
     align-content: space-around;
     align-items: stretch;
@@ -14,7 +20,7 @@
 
         &.selected {
             font-weight: bold;
-            color: #00ffff;
+            color: $colorSelected;
         }
 
         label {
@@ -34,7 +40,8 @@
     max-width: 200px;
 
     li {
-        cursor: pointer;    
+        border: 2px solid transparent;
+        cursor: pointer;
         padding: 3px 0 3px 10px;
 
         &:nth-child(n + 2) {
@@ -55,17 +62,24 @@
             display: block;
             font-size: 12px;
             font-style: italic;
+            margin-top: 2px;
         }
 
         &.selected {
-            &:before {
-                content: '>';
+            border-color: $colorSelected;
+
+            .name {
+                color: $colorSelected;
             }
         }
     }
 }
 
 #popup {
+    position: absolute;
+    right: 0;
+    top: 350px;
+
     &.off {
         display: none;
     }

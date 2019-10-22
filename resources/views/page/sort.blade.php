@@ -25,9 +25,9 @@
             <li class='template'>
                 <span class='name'>{name}</span>
                 <span class='date'>{date}</span>
-                <input type='hidden' name='date-{key}' value='{timestamp}'/>
-                <input type='hidden' name='name-{key}' value='{fullname}'/>
-                <input type='hidden' name='path-{key}' value='{path}'/>
+                <input type='hidden' class='date' value='{timestamp}'/>
+                <input type='hidden' class='name' value='{fullname}'/>
+                <input type='hidden' class='path' value='{path}'/>
             </li>
         </ul>
 
@@ -38,11 +38,9 @@
                 'listName' => 'category',
             ])
         @endcomponent
-    </div>
 
-    <div id='popup' class='off'>
-        <video width='480' height='320' controls>
-            <source src='' type=''/>
-        </video>
+        <div id='popup' class='off'>
+            <video width='480' height='320' autoplay controls loop src=''/>
+        </div>
     </div>
 @endsection
