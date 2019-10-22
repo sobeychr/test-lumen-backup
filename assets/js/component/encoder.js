@@ -8,7 +8,7 @@ const _charCodeEncode = string => {
         out.push( string.charCodeAt(i) );
     }
     return out.join('');
-}
+};
 const _charCodeDecode = (string) => {
     var len = string.length,
         num = '',

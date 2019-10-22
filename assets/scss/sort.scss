@@ -1,1 +1,35 @@
 @import '_default.scss';
+
+.folder-select {
+    align-content: space-around;
+    align-items: stretch;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    li {
+        flex: auto;
+        margin: 5px;
+        padding: 3px;
+
+        &.selected {
+            font-weight: bold;
+            color: #00ffff;
+        }
+
+        label {
+            display: block;
+            text-align: center;
+
+            input[type='radio'] {
+                display: none;
+            }
+        }
+    }
+}
+
+#popup {
+    &.off {
+        display: none;
+    }
+}

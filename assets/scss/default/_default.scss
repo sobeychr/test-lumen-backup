@@ -58,6 +58,18 @@ aside {
     */
 }
 
+fieldset {
+    margin: 10px 0;
+
+    legend {
+        padding: 0 10px;
+    }
+}
+
+label {
+    cursor: pointer;
+}
+
 main {
      margin: 20px auto 0;
      min-width: 100px;
@@ -77,4 +89,8 @@ pre {
     border-left: 3px solid #7b00ff;
     font: 12px Courier, Helvetica, sans-serif;
     padding: 3px;
+}
+
+.template {
+    display: none;
 }

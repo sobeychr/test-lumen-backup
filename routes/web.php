@@ -27,3 +27,11 @@ $router->group(['namespace' => 'page'], function() use ($router) {
     $router->get('/parser',   ['uses' => 'ParserController@main']);
     $router->get('/sort',     ['uses' => 'SortController@main']);
 });
+
+$router->group([
+    'namespace' => 'api',
+    'prefix' => 'api',
+], function() use ($router) {
+    $router->get('/sort/list[/{folder}[/{order}]]', ['uses' => 'SortController@list']);
+    $router->get('/sort/test', ['uses' => 'SortController@test']);
+});
