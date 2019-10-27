@@ -40,7 +40,13 @@
         @endcomponent
 
         <div id='popup' class='off'>
-            <video width='480' height='320' autoplay controls loop src=''/>
+            <div class='sort'>
+                <input type='text' value='' placeholder='// sorted as'/>
+            </div>
+            <div class='media'>
+                <img/>
+                <video autoplay controls loop muted/>
+            </div>
         </div>
     </div>
 @endsection

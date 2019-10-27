@@ -11,6 +11,9 @@ const bToKb = size => size / _config.kb;
 const bToMb = size => size / _config.mb;
 const bToGb = size => size / _config.gb;
 
+const isImage = url => /\.(gif|jpe?g|png|svg|webp)/.test(url);
+const isVideo = url => /\.(mpe?g|mp4|webm)/.test(url);
+
 const round = num => num.toFixed(_config.round);
 const pretty = size => {
 
@@ -29,5 +32,7 @@ export {
     bToKb,
     bToMb,
     bToGb,
+    isImage,
+    isVideo,
     pretty,
 };

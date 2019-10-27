@@ -2,6 +2,7 @@ import $ from 'jquery';
 import { get } from 'api';
 import { getDateTime } from 'date';
 import { cut, replaceAll } from 'string';
+import { isImage } from 'file';
 
 (function($, doc, undefined) {
     'use strict';
@@ -9,28 +10,43 @@ import { cut, replaceAll } from 'string';
     const sort = (function() {
 
         const _configs = {
+            apiPath: 'api/sort/list/{folder}/{order}',
+            checked: ':checked',
             selClass: 'selected',
 
-            selFolder: '.folder-select li',
-            selUpdateList: 'input[name="folder"], input[name="order"]',
+            category: {
+                selButton: 'input[name="category"]',
+            },
 
             load: {
-                selFolder: 'input[name="folder"]:checked',
-                selOrder: 'input[name="order"]:checked',
+                selFolder: 'input[name="folder"]',
+                selOrder: 'input[name="order"]',
             },
 
             populate: {
                 listing: '#listing',
                 maxName: 21,
                 selList: '#listing li:not(.template)',
+                selPath: '.path:first',
                 selTemplate: '#listing .template:first',
             },
+
+            video: {
+                selContainer: '#popup',
+                selImage: '#popup img',
+                selVideo: '#popup video',
+            },
         };
+        _configs.load.selUpdateList = [
+            _configs.load.selFolder,
+            _configs.load.selOrder,
+        ].join(',');
+
+        let _sorts = [];
 
         const init = () => {
-            $(doc).on('click', _configs.selFolder, onSelectFolder);
-            $(doc).on('change', _configs.selUpdateList, onUpdateList);
-            onUpdateList();
+            $(doc).on('change', _configs.load.selUpdateList, onUpdateList);
+            onUpdateList(null);
         };
 
         const boundList = (bound=true) => {
@@ -45,14 +61,14 @@ import { cut, replaceAll } from 'string';
         const loadStart = () => {
             boundList(false);
             $(_configs.populate.selList).remove();
-            const folder = $(_configs.load.selFolder).val();
-            const order = $(_configs.load.selOrder).val();
-            const path = 'api/sort/list/' + folder + '/' + order;
+            const folder = $(_configs.load.selFolder + _configs.checked).val();
+            const order = $(_configs.load.selOrder + _configs.checked).val();
+            const path = _configs.apiPath.replace('{folder}', folder).replace('{order}', order);
             get(path, loadEnd);
         };
 
         const loadEnd = (data) => {
-            const folder = $(_configs.load.selFolder).val();
+            const folder = $(_configs.load.selFolder + _configs.checked).val();
             const folderPath = $('input[name="folder-' + folder + '"]').val();
             const template = $(_configs.populate.selTemplate).clone();
             template.removeClass('template');
@@ -70,21 +86,24 @@ import { cut, replaceAll } from 'string';
                 html = replaceAll(html, '{timestamp}', date);
 
                 $(_configs.populate.listing).append(html);
-                boundList();
             });
+            boundList();
+            setMedia(false);
         };
 
-        const setVideo = fullpath => {
-            $('#popup').removeClass('off');
-            $('#popup video').attr('src', fullpath);
-        };
-
-        const onSelectFolder = (e) => {
-            const $ctarget = $(e.currentTarget);
-            if(!$ctarget.hasClass(_configs.selClass)) {
-                $ctarget.siblings().removeClass(_configs.selClass);
-                $ctarget.addClass(_configs.selClass);
+        const setMedia = fullpath => {
+            if(!fullpath) {
+                $(_configs.video.selImage).removeAttr('src').addClass('none');
+                $(_configs.video.selVideo).removeAttr('src').addClass('none');
+                return;
             }
+
+            const show = isImage(fullpath) ? _configs.video.selImage : _configs.video.selVideo;
+            const hide = isImage(fullpath) ? _configs.video.selVideo : _configs.video.selImage;
+
+            $(_configs.video.selContainer).removeClass('off');
+            $(show).attr('src', fullpath).removeClass('none');
+            $(hide).removeAttr('src').addClass('none');
         };
 
         const onSelectList = (e) => {
@@ -92,12 +111,22 @@ import { cut, replaceAll } from 'string';
             if(!$ctarget.hasClass(_configs.selClass)) {
                 $ctarget.siblings().removeClass(_configs.selClass);
                 $ctarget.addClass(_configs.selClass);
-                setVideo('file:///' + $ctarget.find('.path:first').val());
+                setMedia($ctarget.find(_configs.populate.selPath).val());
             }
         };
 
-        const onUpdateList = () => {
-            loadStart();
+        const onUpdateList = (e) => {
+            if(!e) {
+                loadStart();
+                return;
+            }
+
+            const $parent = $(e.currentTarget).parents('li:first');
+            if(!$parent.hasClass(_configs.selClass)) {
+                $parent.siblings().removeClass(_configs.selClass);
+                $parent.addClass(_configs.selClass);
+                loadStart();
+            }
         };
 
         return {
