@@ -11,5 +11,7 @@ class SortConfig extends BaseConfig
         '/downloads/videos/',
     ];
 
+    const DEST = 'E:/Videos/zzzweb/';
+
     const ORDER = ['date asc', 'date desc', 'name asc', 'name desc'];
 }

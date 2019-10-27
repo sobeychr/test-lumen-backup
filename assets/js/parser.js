@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { base64, charCode, encoding, urlEncode } from 'encoder';
+import { base64, charCode, encoding, urlEncode } from 'component/encoder';
 
 (function($, undefined) {
     'use strict';

@@ -1,4 +1,4 @@
-import { leadingZeros } from 'number';
+import { leadingZeros } from 'component/number';
 
 const newDate = timestamp => {
     const d = new Date();

@@ -9,7 +9,7 @@ class BasePageController extends BaseController
     protected $hasJquery = false;
     protected $hasJs = false;
 
-    protected $name = '';
+    protected $viewName = '';
 
     public function main():string
     {
@@ -17,10 +17,10 @@ class BasePageController extends BaseController
 
         $viewData = array_merge([
             'hasJs' => $this->hasJs,
-            'name' => $this->name,
+            'viewName' => $this->viewName,
         ], $this->viewData());
 
-        $view = view('page.'.$this->name, $viewData);
+        $view = view('page.'.$this->viewName, $viewData);
 
         $this->afterView();
 

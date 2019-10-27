@@ -6,5 +6,5 @@ use App\Http\Controllers\page\BasePageController;
 
 class DownloadController extends BasePageController
 {
-    protected $name = 'download';
+    protected $viewName = 'download';
 }

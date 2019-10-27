@@ -7,7 +7,7 @@ use App\Http\Controllers\page\BasePageController;
 
 class IndexController extends BasePageController
 {
-    protected $name = 'index';
+    protected $viewName = 'index';
 
     protected function viewData():array
     {

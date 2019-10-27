@@ -9,7 +9,7 @@ module.exports = (grunt) => {
         options: {
             browserifyOptions: {
                 paths: [
-                    './assets/js/component/',
+                    './assets/js/',
                     './node_modules/',
                 ],
                 debug: true,

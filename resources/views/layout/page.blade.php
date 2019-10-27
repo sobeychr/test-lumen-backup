@@ -3,12 +3,12 @@
         $time = time();
     @endphp
     <head>
-        <title>LocalLumen - {{$name}}</title>
-        <link rel='icon' href='assets/images/icons/{{$name}}.png' type='image/png'/>
-        <link rel='shortcut icon' href='assets/images/icons/{{$name}}.png' type='image/png'/>
-        <link rel='stylesheet' type='text/css' href='assets/css/{{$name}}.css#{{$time}}'/>
+        <title>LocalLumen - {{$viewName}}</title>
+        <link rel='icon' href='assets/images/icons/{{$viewName}}.png' type='image/png'/>
+        <link rel='shortcut icon' href='assets/images/icons/{{$viewName}}.png' type='image/png'/>
+        <link rel='stylesheet' type='text/css' href='assets/css/{{$viewName}}.css#{{$time}}'/>
         @if($hasJs)
-            <script src='assets/js/{{$name}}.js#{{$time}}'></script>
+            <script src='assets/js/{{$viewName}}.js#{{$time}}'></script>
         @endif
     </head>
     <body>

@@ -10,7 +10,7 @@ class ParserController extends BasePageController
     protected $hasJquery = true;
     protected $hasJs = true;
 
-    protected $name = 'parser';
+    protected $viewName = 'parser';
 
     protected function viewData():array
     {
